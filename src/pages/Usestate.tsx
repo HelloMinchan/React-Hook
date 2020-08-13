@@ -28,21 +28,21 @@ function Usestate() {
         <input
           value={email}
           onChange={handleInputEmail}
-          placeholder={"이메일 useState 변수다람쥐"}
+          placeholder={"이메일이다람쥐"}
         />
         <input
           value={password}
           onChange={handleInputPassword}
-          placeholder={"비밀번호 useState 변수다람쥐"}
+          placeholder={"비밀번호다람쥐"}
         />
       </div>
 
       <div>
-        <b>이메일:</b>
+        <b>이메일 useState 변수다람쥐:</b>
         {email}
       </div>
       <div>
-        <b>비밀번호:</b>
+        <b>비밀번호 useState 변수다람쥐:</b>
         {password}
       </div>
     </div>

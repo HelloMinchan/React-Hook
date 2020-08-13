@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Usestate from "./pages/Usestate";
 import Useeffect from "./pages/Useeffect";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -26,9 +27,12 @@ function App() {
       <hr />
       {/* main 레이아웃 */}
       <main>
-        <Route exact path="/" component={Home} />
-        <Route path="/usestate" component={Usestate} />
-        <Route path="/useeffect" component={Useeffect} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/usestate" component={Usestate} />
+          <Route path="/useeffect" component={Useeffect} />
+          <Route component={NotFound} />
+        </Switch>
       </main>
     </Router>
   );
