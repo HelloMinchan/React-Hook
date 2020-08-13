@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ContextStore } from "../App";
 
 function Useeffect() {
+  const token = useContext(ContextStore);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -9,10 +11,10 @@ function Useeffect() {
     }, 5000);
     return () => {
       alert(
-        "나는 useEffect의 뒷 정리 함수로 언마운트 직전에 호출 된 alert이라고 한다람쥐"
+        `나는 useEffect의 뒷 정리 함수로 언마운트 직전에 호출 된 alert이라고한다람쥐\n 현재 context에 저장된 token은 ${token}`
       );
     };
-  }, []);
+  }, [token]);
 
   if (loading) {
     return (
