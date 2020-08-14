@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ContextStore } from "../App";
 
 function Usecontext({ setToken }: any) {
-  const token = useContext(ContextStore);
+  const { token }: any = useContext(ContextStore);
 
   const handleTempText = (e: any) => {
     setToken(e.target.value);
