@@ -13,6 +13,8 @@ type contextStore = {
   token: string | undefined;
   contextValue1: number;
   contextValue2: number;
+  contextEmail: string;
+  contextPassword: string;
 };
 
 // context API 생성
@@ -22,12 +24,14 @@ function App() {
   const [token, setToken] = useState("나는초기token값이다!");
   const [contextValue1, setContextValue1] = useState(0);
   const [contextValue2, setContextValue2] = useState(0);
+  const [contextEmail, setContextEmail] = useState("정민찬@정민찬.com");
+  const [contextPassword, setContextPassword] = useState("thisispassword123");
 
   return (
     <Router>
       {/* header 레이아웃 */}
       <header>
-        <h1>{token}</h1>
+        <h2>메뉴</h2>
         <Link to="/">
           <button>home</button>
         </Link>
@@ -52,7 +56,15 @@ function App() {
 
       {/* main 레이아웃 */}
       <main>
-        <ContextStore.Provider value={{ token, contextValue1, contextValue2 }}>
+        <ContextStore.Provider
+          value={{
+            token,
+            contextValue1,
+            contextValue2,
+            contextEmail,
+            contextPassword,
+          }}
+        >
           <Switch>
             {/* 홈 라우터 */}
             <Route exact path="/" component={Home} />
@@ -72,6 +84,8 @@ function App() {
                 <Usereducer
                   setContextValue1={setContextValue1}
                   setContextValue2={setContextValue2}
+                  setContextEmail={setContextEmail}
+                  setContextPassword={setContextPassword}
                 />
               )}
             />
@@ -83,7 +97,13 @@ function App() {
       </main>
 
       {/* footer 레이아웃 */}
-      <footer></footer>
+      <footer>
+        <hr />
+        <h1>context Email : {contextEmail}</h1>
+        <h1>context Password : {contextPassword}</h1>
+        <h1>context Token : {token}</h1>
+        <hr />
+      </footer>
     </Router>
   );
 }
