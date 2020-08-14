@@ -1,8 +1,11 @@
-import React, { useState, useMemo } from "react";
-
-function Usememo() {
+import React, { useState, useMemo, useCallback, useRef } from "react";
+// type Input = {
+//   inputEl: React.MutableRefObject<null> | null;
+// };
+function Useref() {
   const [list, setList]: [Array<number>, any] = useState([]);
   const [number, setNumber] = useState("");
+  //   const inputEl: Input = useRef(null);
 
   const getAverage = (numbers: any) => {
     console.log("평균값 계산중..");
@@ -13,17 +16,22 @@ function Usememo() {
 
   const avg = useMemo(() => getAverage(list), [list]);
 
-  const onChange = (e: any) => {
+  const onChange = useCallback((e: any) => {
     console.log("zz");
     setNumber(e.target.value);
-  };
+  }, []);
 
-  const onInsert = (e: any) => {
-    console.log("asdfasdf");
-    const nextList: Array<number> = list.concat(parseInt(number));
-    setList(nextList);
-    setNumber("");
-  };
+  const onInsert = useCallback(
+    (e: any) => {
+      console.log("asdfasdf");
+      const nextList: Array<number> = list.concat(parseInt(number));
+      setList(nextList);
+      setNumber("");
+      //   inputEl.current.focus();
+    },
+    [list, number]
+  );
+
   return (
     <>
       <input value={number} onChange={onChange} />
@@ -41,4 +49,4 @@ function Usememo() {
   );
 }
 
-export default Usememo;
+export default Useref;

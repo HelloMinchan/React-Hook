@@ -8,6 +8,8 @@ import Useeffect from "./pages/Useeffect";
 import Usecontext from "./pages/Usecontext";
 import Usereducer from "./pages/Usereducer";
 import Usememo from "./pages/Usememo";
+import Usecallback from "./pages/Usecallback";
+import Useref from "./pages/Useref";
 import NotFound from "./pages/NotFound";
 
 type contextStore = {
@@ -56,6 +58,14 @@ function App() {
         <Link to="/usememo">
           <button>useMemo</button>
         </Link>
+
+        <Link to="/usecallback">
+          <button>useCallback</button>
+        </Link>
+
+        <Link to="/useref">
+          <button>useRef</button>
+        </Link>
       </header>
       <hr />
 
@@ -96,6 +106,10 @@ function App() {
             />
             {/* useMemo 라우터 */}
             <Route path="/usememo" component={Usememo} />
+            {/* useCallback 라우터 */}
+            <Route path="/usecallback" component={Usecallback} />
+            {/* useRef 라우터 */}
+            <Route path="/useref" component={Useref} />
 
             {/* 404 페이지 라우터 */}
             <Route component={NotFound} />
