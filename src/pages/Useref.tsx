@@ -1,8 +1,9 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef } from "react";
 
-function Usememo() {
+function Useref() {
   const [list, setList]: [Array<number>, any] = useState([]);
   const [number, setNumber] = useState("");
+  const inputEl = useRef(null);
 
   const getAverage = (numbers: any) => {
     console.log("평균값 계산중..");
@@ -14,12 +15,10 @@ function Usememo() {
   const avg = useMemo(() => getAverage(list), [list]);
 
   const onChange = (e: any) => {
-    console.log("zz");
     setNumber(e.target.value);
   };
 
   const onInsert = (e: any) => {
-    console.log("asdfasdf");
     const nextList: Array<number> = list.concat(parseInt(number));
     setList(nextList);
     setNumber("");
@@ -41,4 +40,4 @@ function Usememo() {
   );
 }
 
-export default Usememo;
+export default Useref;

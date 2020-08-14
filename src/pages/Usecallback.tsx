@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 
-function Usememo() {
+function Usecallback() {
   const [list, setList]: [Array<number>, any] = useState([]);
   const [number, setNumber] = useState("");
 
@@ -13,17 +13,21 @@ function Usememo() {
 
   const avg = useMemo(() => getAverage(list), [list]);
 
-  const onChange = (e: any) => {
+  const onChange = useCallback((e: any) => {
     console.log("zz");
     setNumber(e.target.value);
-  };
+  }, []);
 
-  const onInsert = (e: any) => {
-    console.log("asdfasdf");
-    const nextList: Array<number> = list.concat(parseInt(number));
-    setList(nextList);
-    setNumber("");
-  };
+  const onInsert = useCallback(
+    (e: any) => {
+      console.log("asdfasdf");
+      const nextList: Array<number> = list.concat(parseInt(number));
+      setList(nextList);
+      setNumber("");
+    },
+    [list, number]
+  );
+
   return (
     <>
       <input value={number} onChange={onChange} />
@@ -41,4 +45,4 @@ function Usememo() {
   );
 }
 
-export default Usememo;
+export default Usecallback;
