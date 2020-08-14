@@ -7,6 +7,7 @@ import Usestate from "./pages/Usestate";
 import Useeffect from "./pages/Useeffect";
 import Usecontext from "./pages/Usecontext";
 import Usereducer from "./pages/Usereducer";
+import Usememo from "./pages/Usememo";
 import NotFound from "./pages/NotFound";
 
 type contextStore = {
@@ -51,6 +52,10 @@ function App() {
         <Link to="/usereducer">
           <button>useReducer</button>
         </Link>
+
+        <Link to="/usememo">
+          <button>useMemo</button>
+        </Link>
       </header>
       <hr />
 
@@ -89,6 +94,8 @@ function App() {
                 />
               )}
             />
+            {/* useMemo 라우터 */}
+            <Route path="/usememo" component={Usememo} />
 
             {/* 404 페이지 라우터 */}
             <Route component={NotFound} />
