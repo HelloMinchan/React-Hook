@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { ContextStore } from "../App";
 
 function Useeffect() {
-  const token = useContext(ContextStore);
+  const { token }: any = useContext(ContextStore);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
