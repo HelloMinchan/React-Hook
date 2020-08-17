@@ -1,11 +1,9 @@
 import React, { useState, useMemo, useCallback, useRef } from "react";
-// type Input = {
-//   inputEl: React.MutableRefObject<null> | null;
-// };
+
 function Useref() {
   const [list, setList]: [Array<number>, any] = useState([]);
   const [number, setNumber] = useState("");
-  //   const inputEl: Input = useRef(null);
+  const inputEl: any = useRef(null);
 
   const getAverage = (numbers: any) => {
     console.log("평균값 계산중..");
@@ -27,14 +25,14 @@ function Useref() {
       const nextList: Array<number> = list.concat(parseInt(number));
       setList(nextList);
       setNumber("");
-      //   inputEl.current.focus();
+      inputEl.current.focus();
     },
     [list, number]
   );
 
   return (
     <>
-      <input value={number} onChange={onChange} />
+      <input value={number} onChange={onChange} ref={inputEl} />
       <button onClick={onInsert}>등록</button>
       <ul>
         {list.map((value, index) => (
